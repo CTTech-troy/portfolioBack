@@ -1,6 +1,15 @@
 // src/controllers/contactController.js
 import nodemailer from 'nodemailer';
 
+const transporter = nodemailer.createTransport({
+  host: 'smtp.resend.com',
+  port: 587,
+  auth: {
+    user: 'resend',
+    pass: process.env.RESEND_API_KEY
+  }
+});
+
 class ContactController {
   async handleContact(req, res) {
     try {
@@ -12,15 +21,6 @@ class ContactController {
           error: "All fields (name, email, message) are required.",
         });
       }
-
-      // Set up nodemailer transporter
-      const transporter = nodemailer.createTransport({
-        service: 'gmail', // or your email provider
-        auth: {
-          user: process.env.EMAIL_USER, // your email
-          pass: process.env.EMAIL_PASS, // your email password or app password
-        },
-      });
 
       // Email options
       const mailOptions = {
