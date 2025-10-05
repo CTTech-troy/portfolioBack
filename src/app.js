@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://abdulsalam-portfolio.netlify.app/"
+    "https://abdulsalam-portfolio.netlify.app"
   ],
   methods: ["GET", "POST"],
   credentials: true, // optional (if you use cookies or auth)
