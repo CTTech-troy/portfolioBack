@@ -9,7 +9,10 @@ const app = express();
 
 // ✅ Allow requests from your React app (http://localhost:5173)
 app.use(cors({
-  origin: "http://localhost:5173", // React dev server
+  origin: [
+    "http://localhost:5173",
+    "https://abdulsalam-portfolio.netlify.app/"
+  ],
   methods: ["GET", "POST"],
   credentials: true, // optional (if you use cookies or auth)
 }));
